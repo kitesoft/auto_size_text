@@ -16,6 +16,7 @@ before_script:
   - export FLUTTER_SDK=`pwd`/flutter
   - flutter packages get
 script:
+  - flutter test
   - dart tool/grind.dart
 cache:
   directories:
