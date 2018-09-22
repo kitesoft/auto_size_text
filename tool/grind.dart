@@ -5,7 +5,7 @@ import 'package:grinder/grinder.dart';
 void main(List<String> args) => grind(args);
 
 @DefaultTask('Combine tasks for continous integration')
-@Depends('analyse', 'test', 'doc', 'checkformat')
+@Depends('analyse', 'doc', 'checkformat')
 void make() {
   // Nothing to declare here
 }
@@ -19,11 +19,6 @@ void doc() {
   if (docPath.exists) docPath.delete();
   DartDoc.doc();
 }
-
-@Task('Run tests')
-void test() => Process.run('flutter', ['test']).then((ProcessResult results) {
-    print(results.stdout);
-  });
 
 @Task('Check dartfmt for all Dart source files')
 void checkformat() {
