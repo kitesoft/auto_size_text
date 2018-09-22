@@ -21,7 +21,9 @@ void doc() {
 }
 
 @Task('Run tests')
-void test() => run('flutter', arguments: ['test']);
+void test() => Process.run('flutter', ['test']).then((ProcessResult results) {
+    print(results.stdout);
+  });
 
 @Task('Check dartfmt for all Dart source files')
 void checkformat() {
